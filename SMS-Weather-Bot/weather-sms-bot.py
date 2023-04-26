@@ -29,6 +29,7 @@ currentWindSpeedMPH = currentEndPoint['wind_mph']
 currentHumidity = currentEndPoint['humidity']
 currentFeelsLikeTempF = currentEndPoint['feelslike_f']
 
+
 weatherMessage = f'The weather in {nameOfCity}, {nameOfState} is {currentTempF}. The weather feels like {currentFeelsLikeTempF}'
 
 message = client.messages \
