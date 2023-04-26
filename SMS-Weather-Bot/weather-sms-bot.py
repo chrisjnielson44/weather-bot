@@ -1,9 +1,9 @@
-import tweepy
+from twilio.rest import Client
 import requests
 import vars
 import json
 
-# RapidAPI
+# WeatherAPI.com
 weatherapiURL = "https://weatherapi-com.p.rapidapi.com/current.json"
 weatherapiQS = {"q": vars.weatherAPICoord}
 weatherapiHeaders = {
@@ -13,13 +13,10 @@ weatherapiHeaders = {
 }
 weatherAPIData = json.loads(requests.get(weatherapiURL, headers=weatherapiHeaders, params=weatherapiQS).text)
 
-#Twitter API
-Client = tweepy.Client(
-    consumer_key=vars.twitterAPIKey,
-    consumer_secret=vars.twitterAPIKeySecret,
-    access_token=vars.twitterAccessToken,
-    access_token_secret=vars.twitterAccessTokenSecret
-)
+# Twilio API
+account_sid = vars.twilioSID
+auth_token = vars.twilioAuthToken
+client = Client(account_sid, auth_token)
 
 # WeatherAPI.com Data
 locationEndPoint = weatherAPIData['location']
@@ -32,12 +29,11 @@ currentWindSpeedMPH = currentEndPoint['wind_mph']
 currentHumidity = currentEndPoint['humidity']
 currentFeelsLikeTempF = currentEndPoint['feelslike_f']
 
+weatherMessage = f'The weather in {nameOfCity}, {nameOfState} is {currentTempF}. The weather feels like {currentFeelsLikeTempF}'
 
-weather_tweet = f'The weather in {nameOfCity}, {nameOfState} is {currentTempF}. The weather feels like {currentFeelsLikeTempF}'
-
-
-Client.create_tweet(text=weather_tweet)
-
-
-
-
+message = client.messages \
+				.create(
+                     body=weatherMessage,
+                     from_=vars.twilioFrom,
+                     to=vars.twilioTo
+                 )
