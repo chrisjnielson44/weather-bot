@@ -22,15 +22,15 @@ Client = tweepy.Client(
     access_token_secret=vars.yourTwitterAccessTokenSecret
 )
 
-coatcheckToday = ' so wear a jacket!' if weatherBot.chanceOfRain > 20 else '.'
-coatcheckTmrw = ' so wear a jacket tomorrow!' if weatherBot.tmrwChanceOfRain > 20 else '.'
+# Check to see if you have to wear a jacket
+jacketCheckToday = ' so wear a jacket!' if weatherBot.chanceOfRain > 20 else '.'
+jacketCheckTomorrow = ' so wear a jacket tomorrow!' if weatherBot.tmrwChanceOfRain > 20 else '.'
 
-
-weatherTweet = f'The current weather in {weatherBot.nameOfCity} is {weatherBot.currentTempF:.0f}\u00b0F but it feels like {weatherBot.currentFeelsLikeTempF:0f}\u00b0F. ' \
+weatherTweet =  f'The current weather in {weatherBot.nameOfCity} is {weatherBot.currentTempF:.0f}\u00b0F but it feels like {weatherBot.currentFeelsLikeTempF:.0f}\u00b0F. ' \
                 f'Today\'s high is {weatherBot.maxTempF:.0f}\u00b0F and today\'s low is {weatherBot.minTempF:.0f}\u00b0F. ' \
-                f'The UV is {weatherBot.currentUVIndex} and there is a {weatherBot.chanceOfRain}% of rain{coatcheckToday} ' \
+                f'The UV is {weatherBot.currentUVIndex} and there is a {weatherBot.chanceOfRain}% of rain{jacketCheckToday} ' \
                 f'\n\nTomorrow\'s high is {weatherBot.tmrwMaxTempF:.0f}\u00b0F and the low is {weatherBot.minTempF:.0f}\u00b0F. ' \
-                f'There is a {weatherBot.tmrwChanceOfRain}% of rain{coatcheckTmrw}'
+                f'There is a {weatherBot.tmrwChanceOfRain}% of rain{jacketCheckTomorrow}'
 
 Client.create_tweet(text=weatherTweet)
 
