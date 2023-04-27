@@ -1,22 +1,22 @@
 from twilio.rest import Client
 import requests
-import vars
+import keys
 import json
 import weatherBot
 
 # WeatherAPI.com
 weatherapiURL = "https://weatherapi-com.p.rapidapi.com/current.json"
-weatherapiQS = {"q": vars.yourLocation}
+weatherapiQS = {"q": keys.yourLocation}
 weatherapiHeaders = {
 	"content-type": "application/octet-stream",
-	"X-RapidAPI-Key": vars.rapidWeatherAPIKEY,
+	"X-RapidAPI-Key": keys.rapidWeatherAPIKEY,
 	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
 }
 weatherAPIData = json.loads(requests.get(weatherapiURL, headers=weatherapiHeaders, params=weatherapiQS).text)
 
 # Twilio API
-account_sid = vars.twilioSID
-auth_token = vars.twilioAuthToken
+account_sid = keys.twilioSID
+auth_token = keys.twilioAuthToken
 client = Client(account_sid, auth_token)
 
 coatcheckToday = 'so wear a jacket!' if weatherBot.chanceOfRain > 20 else '.'
@@ -33,6 +33,6 @@ weatherMessage = f'\nCurrent temp: {weatherBot.currentTempF:.0f}\u00b0F but it f
 message = client.messages \
 				.create(
                      body=weatherMessage,
-                     from_=vars.twilioFrom,
-                     to=vars.twilioTo
+                     from_=keys.twilioFrom,
+                     to=keys.twilioTo
                  )

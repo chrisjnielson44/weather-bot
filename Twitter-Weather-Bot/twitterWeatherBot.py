@@ -1,25 +1,25 @@
 import tweepy
 import requests
-import vars
+import keys
 import json
 import weatherBot
 
 # RapidAPI
 weatherapiURL = "https://weatherapi-com.p.rapidapi.com/current.json"
-weatherapiQS = {"q": vars.yourLocation}
+weatherapiQS = {"q": keys.yourLocation}
 weatherapiHeaders = {
 	"content-type": "application/octet-stream",
-	"X-RapidAPI-Key": vars.rapidWeatherAPIKEY,
+	"X-RapidAPI-Key": keys.rapidWeatherAPIKEY,
 	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
 }
 weatherAPIData = json.loads(requests.get(weatherapiURL, headers=weatherapiHeaders, params=weatherapiQS).text)
 
 #Twitter API
 Client = tweepy.Client(
-    consumer_key=vars.yourTwitterAPIKey,
-    consumer_secret=vars.yourTwitterAPIKeySecret,
-    access_token=vars.yourTwitterAccessToken,
-    access_token_secret=vars.yourTwitterAccessTokenSecret
+    consumer_key=keys.yourTwitterAPIKey,
+    consumer_secret=keys.yourTwitterAPIKeySecret,
+    access_token=keys.yourTwitterAccessToken,
+    access_token_secret=keys.yourTwitterAccessTokenSecret
 )
 
 # Check to see if you have to wear a jacket

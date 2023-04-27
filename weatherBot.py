@@ -1,12 +1,12 @@
 import requests
-import vars
+import keys
 import json
 
 # API Header
-weatherAPIQS = {"q": vars.yourLocation, "days": "3"}
+weatherAPIQS = {"q": keys.yourLocation, "days": "3"}
 weatherAPIHeaders = {
 		"content-type": "application/octet-stream",
-		"X-RapidAPI-Key": vars.rapidWeatherAPIKEY,
+		"X-RapidAPI-Key": keys.rapidWeatherAPIKEY,
 		"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
 	}
 weatherAPIData = json.loads(requests.get("https://weatherapi-com.p.rapidapi.com/forecast.json", headers=weatherAPIHeaders, params=weatherAPIQS).text)
