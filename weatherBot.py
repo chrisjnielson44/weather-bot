@@ -3,14 +3,13 @@ import vars
 import json
 
 # API Header
-weatherapiURL = "https://weatherapi-com.p.rapidapi.com/forecast.json"
-weatherapiQS = {"q": vars.weatherAPICoord, "days": "3"}
-weatherapiHeaders = {
-	"content-type": "application/octet-stream",
-	"X-RapidAPI-Key": vars.rapidWeatherAPIKEY,
-	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
-}
-weatherAPIData = json.loads(requests.get(weatherapiURL, headers=weatherapiHeaders, params=weatherapiQS).text)
+weatherAPIQS = {"q": vars.yourLocation, "days": "3"}
+weatherAPIHeaders = {
+		"content-type": "application/octet-stream",
+		"X-RapidAPI-Key": vars.rapidWeatherAPIKEY,
+		"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
+	}
+weatherAPIData = json.loads(requests.get("https://weatherapi-com.p.rapidapi.com/forecast.json", headers=weatherAPIHeaders, params=weatherAPIQS).text)
 
 # WeatherAPI.com Data
 # Current Weather
@@ -35,16 +34,21 @@ averageHumidity = todayForecastEndPoint['avghumidity']
 condition = todayForecastEndPoint['condition']['text']
 forecastUV = todayForecastEndPoint['uv']
 
-# Forecast (Tommorrow)
-tommorrowForecastEndPoint = weatherAPIData['forecast']['forecastday'][1]['day']
-tmrwMaxTempF = tommorrowForecastEndPoint['maxtemp_f']
-tmrwMinTempF = tommorrowForecastEndPoint['mintemp_f']
-tmrwMaxWinMPH = tommorrowForecastEndPoint['maxwind_mph']
-tmrwChanceOfRain = tommorrowForecastEndPoint['daily_chance_of_rain']
-tmrwTotalPrecipIN = tommorrowForecastEndPoint['totalprecip_in']
-tmrwAverageHumidity = tommorrowForecastEndPoint['avghumidity']
-tmrwCondition = tommorrowForecastEndPoint['condition']['text']
-tmrwforecastUV = tommorrowForecastEndPoint['uv']
+# Forecast (Tomorrow)
+tomorrowForecastEndPoint = weatherAPIData['forecast']['forecastday'][1]['day']
+tmrwMaxTempF = tomorrowForecastEndPoint['maxtemp_f']
+tmrwMinTempF = tomorrowForecastEndPoint['mintemp_f']
+tmrwMaxWinMPH = tomorrowForecastEndPoint['maxwind_mph']
+tmrwChanceOfRain = tomorrowForecastEndPoint['daily_chance_of_rain']
+tmrwTotalPrecipIN = tomorrowForecastEndPoint['totalprecip_in']
+tmrwAverageHumidity = tomorrowForecastEndPoint['avghumidity']
+tmrwCondition = tomorrowForecastEndPoint['condition']['text']
+tmrwforecastUV = tomorrowForecastEndPoint['uv']
+
+
+
+
+
 
 
 
