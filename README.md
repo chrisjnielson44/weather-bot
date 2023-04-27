@@ -41,7 +41,7 @@ Replace your_api_key_here, your_secret_key_here, etc. with your own API keys and
 4. Install Tweepy with the command pip install tweepy.
 5. Run the twitterBot.py file to get a tweet about the current weather in your location.
 
-##Twilio SMS Weather Bot
+## Twilio SMS Weather Bot
 1. You need to have a Twilio account to use the SMS bot.
 2. After creating an account, go to the Twilio Console and get your Account SID and Auth Token.
 3. Add these credentials and other details, such as the 'From' and 'To' phone numbers, to the .env file.
@@ -49,7 +49,7 @@ Replace your_api_key_here, your_secret_key_here, etc. with your own API keys and
 5. Run the smsBot.py file to get an SMS message about the current weather in your location.
 
 
-Credits
+## Credits
 
 This project was created by [Christopher Nielson](https://cjnielson.com). Special thanks to weatherAPI.com, Tweepy, and Twilio for their APIs and libraries.
 
