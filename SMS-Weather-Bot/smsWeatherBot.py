@@ -4,6 +4,8 @@ import vars
 import json
 import weatherBot
 
+# Test to see if this works
+
 # WeatherAPI.com
 weatherapiURL = "https://weatherapi-com.p.rapidapi.com/current.json"
 weatherapiQS = {"q": vars.yourLocation}
