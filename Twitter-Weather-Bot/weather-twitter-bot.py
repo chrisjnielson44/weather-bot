@@ -2,6 +2,7 @@ import tweepy
 import requests
 import vars
 import json
+import weatherBot
 
 # RapidAPI
 weatherapiURL = "https://weatherapi-com.p.rapidapi.com/current.json"
@@ -21,20 +22,7 @@ Client = tweepy.Client(
     access_token_secret=vars.twitterAccessTokenSecret
 )
 
-# WeatherAPI.com Data
-locationEndPoint = weatherAPIData['location']
-currentEndPoint = weatherAPIData['current']
-
-nameOfCity = locationEndPoint['name']
-nameOfState = locationEndPoint['region']
-currentTempF = currentEndPoint['temp_f']
-currentWindSpeedMPH = currentEndPoint['wind_mph']
-currentHumidity = currentEndPoint['humidity']
-currentFeelsLikeTempF = currentEndPoint['feelslike_f']
-
-
-weather_tweet = f'The weather in {nameOfCity}, {nameOfState} is {currentTempF}. The weather feels like {currentFeelsLikeTempF}'
-
+weather_tweet = ''
 
 Client.create_tweet(text=weather_tweet)
 
