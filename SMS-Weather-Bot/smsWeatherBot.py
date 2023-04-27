@@ -19,18 +19,16 @@ account_sid = vars.twilioSID
 auth_token = vars.twilioAuthToken
 client = Client(account_sid, auth_token)
 
-if weatherBot.chanceOfRain > 20:
-    coatcheckToday = ' so wear a jacket!'
-elif weatherBot.tmrwChanceOfRain > 20:
-    coatcheckTmrw = ' so wear a jacket tomorrow!'
-else:
-    coatcheckToday, coatcheckTmrw = ''
+coatcheckToday = 'so wear a jacket!' if weatherBot.chanceOfRain > 20 else '.'
+coatcheckTmrw = 'so wear a jacket tomorrow!' if weatherBot.tmrwChanceOfRain > 20 else '.'
 
-weatherMessage = f'The current weather is {weatherBot.currentTempF:.0f}\u00b0F but it feels like {weatherBot.currentFeelsLikeTempF}\u00b0F. ' \
-                f'\nToday\'s high is {weatherBot.maxTempF:.0f}\u00b0F and today\'s low is {weatherBot.minTempF:.0f}\u00b0F.' \
-                f'The UV is {weatherBot.currentUVIndex} and there is a {weatherBot.chanceOfRain}\% of rain{coatcheckToday}' \
-                f'\nTomorrow\'s high is {weatherBot.tmrwMaxTempF}\u00b0F and the low is {weatherBot.minTempF}\u00b0F' \
-                f'There is a {weatherBot.tmrwChanceOfRain}% of rain{coatcheckTmrw}'
+weatherMessage = f'\nCurrent temp: {weatherBot.currentTempF:.0f}\u00b0F but it feels like {weatherBot.currentFeelsLikeTempF:.0f}\u00b0F' \
+                f'\nToday\'s high: {weatherBot.maxTempF:.0f}\u00b0F' \
+                f'\nToday\'s low: {weatherBot.minTempF:.0f}\u00b0F' \
+                f'\nToday\'s chance of rain: {weatherBot.chanceOfRain}% - {coatcheckToday}' \
+                f'\n\nTomorrow\'s High: {weatherBot.tmrwMaxTempF:.0f}\u00b0F' \
+                f'\nTomorrow\'s Low: {weatherBot.tmrwMinTempF:.0f}\u00b0F' \
+                f'\nChance of rain tomorrow: {weatherBot.tmrwChanceOfRain}% - {coatcheckTmrw} '\
 
 message = client.messages \
 				.create(
