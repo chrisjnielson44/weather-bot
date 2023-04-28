@@ -55,4 +55,5 @@ Replace your_api_key_here, your_secret_key_here, etc. with your own API keys and
 This project was created by Christopher Nielson, CS undergrad student at Florida State University. Special thanks to weatherAPI.com, Tweepy, and Twilio for their APIs and libraries.
 
 [Github Profile](https://github.com/chrisjnielson44)
+
 [Website](https://cjnielson.com)
