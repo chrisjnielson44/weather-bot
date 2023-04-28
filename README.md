@@ -22,6 +22,7 @@ pip install requests tweepy twilio
 
 ```bash 
 WEATHER_API_KEY=your_api_key_here
+WEATHER_LOCATION=your_location
 TWITTER_API_KEY=your_api_key_here
 TWITTER_API_SECRET_KEY=your_secret_key_here
 TWITTER_ACCESS_TOKEN=your_access_token_here
@@ -31,7 +32,7 @@ TWILIO_AUTH_TOKEN=your_auth_token_here
 TWILIO_PHONE_NUMBER=your_phone_number_here
 ```
 
-Replace your_api_key_here, your_secret_key_here, etc. with your own API keys and access tokens.
+Replace your_api_key_here, your_secret_key_here, etc. with your own API keys and access tokens. For the location visit https://rapidapi.com/weatherapi/api/weatherapi-com for acceptable location parameters.
 
 ## Usage
 ### Twitter Weather Bot
